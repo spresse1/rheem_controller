@@ -1,0 +1,17 @@
+sudo: false
+language: python
+# When updating, don't forget tox.ini
+# Not supported (yet)
+#  - "3.4"
+#  - "3.5"
+env:
+  - TOXENV=py26
+  - TOXENV=py27
+  - TOXENV=pep8
+  - TOXENV=pylint
+  - TOXENV=docs
+  - TOXENV=cover
+  - TOXENV=codacy-coverage-upload TOX_TESTENV_PASSENV=CODACY_PROJECT_TOKEN
+install:
+  - pip install tox-travis
+script: tox

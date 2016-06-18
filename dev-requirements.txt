@@ -1,0 +1,6 @@
+coverage
+mock
+tox
+virtualenv
+pytest
+autopep8
