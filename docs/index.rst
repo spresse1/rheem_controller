@@ -1,4 +1,4 @@
-Welcome to rheem-controller's documentation!
+Welcome to rheem_controller's documentation!
 =====================================
 
 Contents:

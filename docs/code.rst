@@ -1,11 +1,11 @@
 Class Documentation
 *******************
 
-.. automodule:: rheem-controller
+.. automodule:: rheem_controller
    :members:
 
 Test Documentation
 ******************
 
-.. automodule:: test_rheem-controller
+.. automodule:: test_rheem_controller
    :members:

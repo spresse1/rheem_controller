@@ -3,12 +3,12 @@
 from distutils.core import setup
 from setuptools import setup
 
-setup(name='rheem-controller',
+setup(name='rheem_controller',
 	version='1.0',
 	description='',
 	author='Steven Presser',
-	author_email='rheem-controller@pressers.name',
-	url='https://github.com/spresse1/rheem-controller',
+	author_email='rheem_controller@pressers.name',
+	url='https://github.com/spresse1/rheem_controller',
 	packages=[''],
 	requires=[
 	],

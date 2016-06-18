@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# rheem-controller documentation build configuration file, created by
+# rheem_controller documentation build configuration file, created by
 # sphinx-quickstart on Sun Apr 17 10:20:21 2016.
 #
 # This file is execfile()d with the current directory set to its
@@ -51,7 +51,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'rheem-controller'
+project = u'rheem_controller'
 copyright = u'2016, Steven Presser'
 author = u'Steven Presser'
 
@@ -126,7 +126,7 @@ html_theme = 'default'
 
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
-#html_title = u'rheem-controller v1.0'
+#html_title = u'rheem_controller v1.0'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -208,7 +208,7 @@ html_static_path = ['_static']
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'rheem-controllerdoc'
+htmlhelp_basename = 'rheem_controllerdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -230,7 +230,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'rheem-controller.tex', u'rheem-controller Documentation',
+    (master_doc, 'rheem_controller.tex', u'rheem_controller Documentation',
      u'Steven Presser', 'manual'),
 ]
 
@@ -260,7 +260,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'rheem-controller', u'rheem-controller Documentation',
+    (master_doc, 'rheem_controller', u'rheem_controller Documentation',
      [author], 1)
 ]
 
@@ -274,8 +274,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'rheem-controller', u'rheem-controller Documentation',
-     author, 'rheem-controller', 'One line description of project.',
+    (master_doc, 'rheem_controller', u'rheem_controller Documentation',
+     author, 'rheem_controller', 'One line description of project.',
      'Miscellaneous'),
 ]
 

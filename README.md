@@ -1,16 +1,22 @@
-# rheem-controller
+# rheem_controller
 
 ## CI Status
 
-[![Build Status](https://travis-ci.org/spresse1/rheem-controller.svg?branch=master)](https://travis-ci.org/spresse1/rheem-controller)
-[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/PROJECTMD5)](https://www.codacy.com/app/spresse1/remote_thermostat?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=spresse1/remote_thermostat&amp;utm_campaign=Badge_Coverage)
-[![Codacy Badge](https://api.codacy.com/project/badge/grade/PROJECTMD5)](https://www.codacy.com/app/steve_7/rheem-controller)
+[![Build Status](https://travis-ci.org/spresse1/rheem_controller.svg?branch=master)](https://travis-ci.org/spresse1/rheem_controller)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/442183750d6e495abfbc0eb5e21a2242)](https://www.codacy.com/app/spresse1/rheem_controller?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=spresse1/rheem_controller&amp;utm_campaign=Badge_Coverage)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/442183750d6e495abfbc0eb5e21a2242)](https://www.codacy.com/app/spresse1/rheem_controller)
 
 ## Purpose
 
+This project aims to provide a pythonic interface to the Rheem EcoNet API (http://io.myrheem.com/).  (Yes, their web page is terribly designed.  To access the API we will be interfacing, select 'EcoNet' in the dropdown, then click 'About').  This project aims to eventually provide more advanced control - such as schedules.  It also hopes to provide an API suitable for use with larger home automation projects.
+
 ## Installation
 
+Pending.  Will be `pip install rheem_controller`
+
 ## Use
+
+See API documentation.
 
 ## Dev installation
 
