@@ -8,7 +8,7 @@
 
 ## Purpose
 
-This project aims to provide a pythonic interface to the Rheem EcoNet API (http://io.myrheem.com/).  (Yes, their web page is terribly designed.  To access the API we will be interfacing, select 'EcoNet' in the dropdown, then click 'About').  This project aims to eventually provide more advanced control - such as schedules.  It also hopes to provide an API suitable for use with larger home automation projects.
+This project aims to provide a pythonic interface to the Rheem EcoNet API (http://io.myrheem.com/).  (Yes, their web page is terribly designed.  To access the API we will be interfacing, select 'EcoNet' in the dropdown, then wait for the page to reload).  This project aims to eventually provide more advanced control - such as schedules.  It also hopes to provide an API suitable for use with larger home automation projects.
 
 ## Installation
 

@@ -4,3 +4,4 @@ tox
 virtualenv
 pytest
 autopep8
+responses

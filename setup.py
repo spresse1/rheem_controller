@@ -9,7 +9,7 @@ setup(name='rheem_controller',
 	author='Steven Presser',
 	author_email='rheem_controller@pressers.name',
 	url='https://github.com/spresse1/rheem_controller',
-	packages=[''],
+	packages=['rheem_controller'],
 	requires=[
 	],
 	classifiers=[
