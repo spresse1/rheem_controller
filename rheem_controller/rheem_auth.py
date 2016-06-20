@@ -1,5 +1,5 @@
 from base64 import b64encode
-from time import mktime, time
+from time import time
 from json import loads
 from six.moves.urllib.parse import quote
 import logging
