@@ -12,14 +12,13 @@ class test_start(unittest.TestCase):
     def setUp(self):
         # Most tests don't use this patcher
         self.get_token_patcher = patch("rheem_controller.auth.Auth._get_token")
-        
-        #Most do use this one (or don't get to it)
+
+        # Most do use this one (or don't get to it)
         self.timer_patcher = patch("rheem_controller.auth.threading.Timer")
         self.mock_timer = self.timer_patcher.start()
-    
+
     def tearDown(self):
         responses.reset()
-        #self.get_token_patcher.stop()
         self.timer_patcher.stop()
 
     def test_start(self):
@@ -39,20 +38,20 @@ class test_start(unittest.TestCase):
         self.mock_get_token.assert_called_with(
             "grant_type=refresh&refresh_token=refresh_token")
 
+
 class test__get_token(unittest.TestCase):
     urlre = re.compile(".*/auth/token")
 
     def setUp(self):
         # Most tests don't use this patcher
         self.get_token_patcher = patch("rheem_controller.auth.Auth._get_token")
-        
-        #Most do use this one (or don't get to it)
+
+        # Most do use this one (or don't get to it)
         self.timer_patcher = patch("rheem_controller.auth.threading.Timer")
         self.mock_timer = self.timer_patcher.start()
-    
+
     def tearDown(self):
         responses.reset()
-        #self.get_token_patcher.stop()
         self.timer_patcher.stop()
 
     @responses.activate
@@ -69,7 +68,7 @@ class test__get_token(unittest.TestCase):
         self.assertEqual(ra._access_token, "aToken")
         self.assertEqual(ra._refresh_token, "someRefresh")
         self.mock_timer.assert_called_with(2000, ra.refresh)
-        
+
     @responses.activate
     def test__get_token_success_success_with_timer(self):
         responses.add(
@@ -94,7 +93,7 @@ class test__get_token(unittest.TestCase):
         )
         ra = rheem_controller.auth.Auth()
         with self.assertRaises(
-            rheem_controller.auth.InvalidAPIResponseException):
+                rheem_controller.auth.InvalidAPIResponseException):
             ra._get_token(
                 "username=test%40example&password=password&grant_type=password"
             )
@@ -108,11 +107,11 @@ class test__get_token(unittest.TestCase):
         )
         ra = rheem_controller.auth.Auth()
         with self.assertRaises(
-            rheem_controller.auth.InvalidAuthenticationException):
+                rheem_controller.auth.InvalidAuthenticationException):
             ra._get_token(
                 "username=test%40example&password=password&grant_type=password"
             )
-    
+
     @responses.activate
     def test__get_token_success_InvalidKeyError(self):
         responses.add(
@@ -122,25 +121,26 @@ class test__get_token(unittest.TestCase):
         )
         ra = rheem_controller.auth.Auth()
         with self.assertRaises(
-            rheem_controller.auth.InvalidAPIResponseException):
+                rheem_controller.auth.InvalidAPIResponseException):
             ra._get_token(
                 "username=test%40example&password=password&grant_type=password"
             )
+
 
 class test___call__(unittest.TestCase):
     def setUp(self):
         self.ra = rheem_controller.auth.Auth()
         self.mock_r = Mock()
         self.mock_r.headers = {}
-    
+
     def test_success(self):
         self.ra.token = "SomeToken"
         self.ra.client_id = "Some ID"
         self.ra(self.mock_r)
         self.assertEqual(self.mock_r.headers["Authorization"],
-            "Basic SomeToken")
+                         "Basic SomeToken")
         self.assertEqual(self.mock_r.headers["X-ClientID"], "Some ID")
-    
+
     def test_need_start(self):
         with self.assertRaises(rheem_controller.auth.NotStartedException):
             self.ra(self.mock_r)

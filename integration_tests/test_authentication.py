@@ -14,4 +14,5 @@ if __name__ == "__main__":
         print("Got token %s" % ra._access_token)
         assert(ra._access_token)
     except Exception as e:
-        import pdb; pdb.set_trace()
+        import pdb
+        pdb.set_trace()

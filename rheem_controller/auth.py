@@ -33,16 +33,16 @@ class Auth(requests.auth.AuthBase):
 
     # Characters not to url-encode in username/passwd:
     _SAFE_CHARS = ",/?:&=+$#"
-    
+
     _AUTH_HEADERS = {
-        "Authorization": "Basic " + 
-        	b64encode("com.rheem.econet_api:stablekernel"),
+        "Authorization":
+            "Basic " + b64encode("com.rheem.econet_api:stablekernel"),
         "Content-Type": "application/x-www-form-urlencoded",
         "X-Requested-With": "XMLHttpRequest",
     }
-    
-    _access_token=None
-    _refresh_token=None
+
+    _access_token = None
+    _refresh_token = None
 
     def __init__(self, base_url="https://econet-api.rheemcert.com",
                  client_id="4890422047775.apps.rheemapi.com", timeout=10):
@@ -56,7 +56,7 @@ class Auth(requests.auth.AuthBase):
         super(Auth, self).__init__()
         self.base_url = base_url
         self.client_id = client_id
-        self.timeout=timeout
+        self.timeout = timeout
 
     def __call__(self, r):
         """
@@ -70,9 +70,8 @@ class Auth(requests.auth.AuthBase):
             r.headers["X-Timestamp"] = int(time() * 1000)
             return r
         except AttributeError:
-           raise NotStartedException("Must call Auth.start before "
-        		"using the instance for authentication")
-
+            raise NotStartedException("Must call Auth.start before "
+                                      "using the instance for authentication")
 
     def start(self, user, passwd):
         """
@@ -92,8 +91,9 @@ class Auth(requests.auth.AuthBase):
         self._get_token(data)
 
     def _get_token(self, data):
-        response = requests.post(self.base_url + self._API_TOKEN_FETCH,
-            headers=self._AUTH_HEADERS, data=data, timeout=self.timeout)
+        response = requests.post(
+            self.base_url + self._API_TOKEN_FETCH, headers=self._AUTH_HEADERS,
+            data=data, timeout=self.timeout)
         try:
             json = loads(response.text)
         except ValueError as e:
