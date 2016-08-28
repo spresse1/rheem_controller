@@ -97,11 +97,11 @@ class test___call__(unittest.TestCase):
         self.mock_r.headers = {}
 
     def test_success(self):
-        self.ra.token = "SomeToken"
+        self.ra._access_token = "SomeToken"
         self.ra.client_id = "Some ID"
         self.ra(self.mock_r)
         self.assertEqual(self.mock_r.headers["Authorization"],
-                         "Basic SomeToken")
+                         "Bearer SomeToken")
         self.assertEqual(self.mock_r.headers["X-ClientID"], "Some ID")
 
     def test_need_start(self):

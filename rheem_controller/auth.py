@@ -2,7 +2,6 @@ from base64 import b64encode
 from time import time
 from json import loads
 from six.moves.urllib.parse import quote
-from base64 import b64encode
 import logging
 import requests
 import threading
@@ -66,11 +65,11 @@ class Auth(requests.auth.AuthBase):
         :raises: InvalidAuthenticationException
         """
         try:
-            r.headers["Authorization"] = "Basic " + self.token
+            r.headers["Authorization"] = "Bearer " + self._access_token
             r.headers["X-ClientID"] = self.client_id
             r.headers["X-Timestamp"] = int(time() * 1000)
             return r
-        except AttributeError:
+        except (AttributeError, TypeError):
             raise NotStartedException("Must call Auth.start before "
                                       "using the instance for authentication")
 
