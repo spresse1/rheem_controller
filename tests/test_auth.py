@@ -6,47 +6,10 @@ import unittest
 import re
 
 
-class test_start(unittest.TestCase):
-    urlre = re.compile(".*/auth/token")
-
-    def setUp(self):
-        # Most tests don't use this patcher
-        self.get_token_patcher = patch("rheem_controller.auth.Auth._get_token")
-
-        # Most do use this one (or don't get to it)
-        self.timer_patcher = patch("rheem_controller.auth.threading.Timer")
-        self.mock_timer = self.timer_patcher.start()
-
-    def tearDown(self):
-        responses.reset()
-        self.timer_patcher.stop()
-
-    def test_start(self):
-        self.mock_get_token = self.get_token_patcher.start()
-        ra = rheem_controller.auth.Auth()
-        ra.start("test@example", "password")
-
-        self.mock_get_token.assert_called_with(
-            "username=test%40example&password=password&grant_type=password")
-
-    def test_refresh(self):
-        self.mock_get_token = self.get_token_patcher.start()
-        ra = rheem_controller.auth.Auth()
-        ra._refresh_token = "refresh_token"
-        ra.refresh()
-
-        self.mock_get_token.assert_called_with(
-            "grant_type=refresh&refresh_token=refresh_token")
-
-
 class test__get_token(unittest.TestCase):
     urlre = re.compile(".*/auth/token")
 
     def setUp(self):
-        # Most tests don't use this patcher
-        self.get_token_patcher = patch("rheem_controller.auth.Auth._get_token")
-
-        # Most do use this one (or don't get to it)
         self.timer_patcher = patch("rheem_controller.auth.threading.Timer")
         self.mock_timer = self.timer_patcher.start()
 
@@ -144,3 +107,36 @@ class test___call__(unittest.TestCase):
     def test_need_start(self):
         with self.assertRaises(rheem_controller.auth.NotStartedException):
             self.ra(self.mock_r)
+
+
+class test_start(unittest.TestCase):
+    urlre = re.compile(".*/auth/token")
+
+    def setUp(self):
+        # Most tests don't use this patcher
+        self.get_token_patcher = patch("rheem_controller.auth.Auth._get_token")
+        self.mock_get_token = self.get_token_patcher.start()
+
+        # Most do use this one (or don't get to it)
+        self.timer_patcher = patch("rheem_controller.auth.threading.Timer")
+        self.mock_timer = self.timer_patcher.start()
+
+    def tearDown(self):
+        responses.reset()
+        self.timer_patcher.stop()
+        self.get_token_patcher.stop()
+
+    def test_start(self):
+        ra = rheem_controller.auth.Auth()
+        ra.start("test@example", "password")
+
+        self.mock_get_token.assert_called_with(
+            "username=test%40example&password=password&grant_type=password")
+
+    def test_refresh(self):
+        ra = rheem_controller.auth.Auth()
+        ra._refresh_token = "refresh_token"
+        ra.refresh()
+
+        self.mock_get_token.assert_called_with(
+            "grant_type=refresh&refresh_token=refresh_token")

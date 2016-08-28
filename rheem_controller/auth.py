@@ -36,7 +36,8 @@ class Auth(requests.auth.AuthBase):
 
     _AUTH_HEADERS = {
         "Authorization":
-            "Basic " + b64encode("com.rheem.econet_api:stablekernel"),
+            "Basic " + b64encode(
+                b"com.rheem.econet_api:stablekernel").decode('UTF-8'),
         "Content-Type": "application/x-www-form-urlencoded",
         "X-Requested-With": "XMLHttpRequest",
     }
